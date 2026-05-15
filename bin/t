@@ -19,7 +19,7 @@ else
 #{?session_grouped, (group ,}#{session_group}#{?session_grouped,),}#{?session_attached,#{?window_active, (attached),},}")
   else
     RESULT=$(tmux list-sessions -F "#{session_last_attached} #{session_name}: #{session_windows} window(s)\
-#{?session_grouped, (group ,}#{session_group}#{?session_grouped,),}#{?session_attached, (attached),}")
+#{?session_grouped, (group ,}#{session_group}#{?session_grouped,),}#{?session_attached, (attached),}" | rg -v "scratch:")
   fi
   RESULT=$( (
     echo "$RESULT" |
